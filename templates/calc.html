@@ -29,7 +29,7 @@
 <!-- bootstrap requires a 'container' div around content -->
 <div class="container">
 
-<h1>ACP Brevet Closing times</h1>
+<h1>ACP Brevet Opening and Closing times</h1>
 
   <!--
   -- If there are any warnings or other messages from a prior
@@ -53,8 +53,11 @@
 <form role="form">
 <div class="row">
   <div class="col-md-2">
-    <input type="text" class="form-control"
-     name="miles" value="Distance in miles"/>
+    <label>Checkpoint 1</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check1" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
   </div>
   <div class="col-md-4">
     <input type="text" class="form-control"
@@ -67,8 +70,11 @@
 
 <div class="row">
   <div class="col-md-2">
-    <input type="text" class="form-control"
-     name="miles" value="Distance in miles"/>
+    <label>Checkpoint 2</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check2" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
   </div>
   <div class="col-md-4">
     <input type="text" class="form-control"
@@ -81,8 +87,130 @@
 
 <div class="row">
   <div class="col-md-2">
+    <label>Checkpoint 3</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check3" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
     <input type="text" class="form-control"
-     name="miles" value="Distance in miles"/>
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 4</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check4" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 5</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check5" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 6</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check6" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 7</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check7" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 8</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check8" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 9</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check9" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control"
+      name="location" value="location" />
+  </div>
+  <div class="col-md-4">
+    <span class="times form-control">(times)</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label>Checkpoint 10</label>
+  </div>
+  <div class="col-md-2">
+    <input id="check10" type="text" class="form-control"
+     name="kms" value="Distance in kms"/>
   </div>
   <div class="col-md-4">
     <input type="text" class="form-control"
@@ -97,36 +225,61 @@
 <script type="text/javascript">
 
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  
+	$("#check1, #check2, #check3, #check4, #check5, #check6, #check7, #check8, #check9, #check10").keyup(function() {
+// Do the following when the page is finished loading
 
-  $(document).ready(function(){
-   // Do the following when the page is finished loading
+           var e_kms = $(this).val();
 
-      // When a field named 'miles' is changed ...
-      $('input[name="miles"]').change(
-          // ... execute this function
-          function(){
-              var e_miles = $(this).val();
+           var target = $(this).parents(".row").find(".times");
 
-              var target = $(this).parents(".row").find(".times");
+           // DEBUG: How do I replace the 'times' field?
+           // alert("Content of the field I want to change: " +
+           //   target.html());
 
-              // DEBUG: How do I replace the 'times' field?
-              // alert("Content of the field I want to change: " +
-              //   target.html());
+           // AJAX request
+           $.getJSON($SCRIPT_ROOT + '/_calc_times',
+               // The object to pass to the server
+               { kms: e_kms },
+               // The function to call with the response
+               function(data) {
+                  var times = data.result;
+                  // alert("Got a response: " +  times);
+                  target.text(times);
+               }); // End of the call to getJSON
+           
 
-              // AJAX request
-              $.getJSON($SCRIPT_ROOT + '/_calc_times',
-                  // The object to pass to the server
-                  { miles: e_miles },
-                  // The function to call with the response
-                  function(data) {
-                     var times = data.result;
-                     // alert("Got a response: " +  times);
-                     target.text(times);
-                  }); // End of the call to getJSON
-          });  // End of the function to be called when field changes
-              
+  });   // end of what we do on document ready
 
-     });   // end of what we do on document ready
+  // $(document).keyup(function(){
+  //  // Do the following when the page is finished loading
+  //
+  //     // When a field named 'kms' is changed ...
+  //     $('input[name="kms"]').change(
+  //         // ... execute this function
+  //         function(){
+  //             var e_kms = $(this).val();
+  //
+  //             var target = $(this).parents(".row").find(".times");
+  //
+  //             // DEBUG: How do I replace the 'times' field?
+  //             // alert("Content of the field I want to change: " +
+  //             //   target.html());
+  //
+  //             // AJAX request
+  //             $.getJSON($SCRIPT_ROOT + '/_calc_times',
+  //                 // The object to pass to the server
+  //                 { kms: e_kms },
+  //                 // The function to call with the response
+  //                 function(data) {
+  //                    var times = data.result;
+  //                    // alert("Got a response: " +  times);
+  //                    target.text(times);
+  //                 }); // End of the call to getJSON
+  //         });  // End of the function to be called when field changes
+  //
+  //
+  //    });   // end of what we do on document ready
 
 </script>
 
