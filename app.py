@@ -83,103 +83,202 @@ def calc_times():
           finalClose = 1
       else:
          finalClose = stepstone(kms, 15) 
-      if finalOpen[1] == 60:
+      if (finalOpen[1] == 60):
           finalOpen[0] += 1
           finalOpen[1] = 0
-      if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen % 60
-          finalOpen[1] = finalOpen // 60
-      if finalClose[1] > 60:
-          finalClose[0] += finalClose % 60
-          finalClose[1] = finalClose // 60
+      if (finalClose[1]) == 60:
+          finalClose[0] += 1
+          finalClose[1] = 0
+      if (finalOpen[1]) > 60:
+          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[1] = finalOpen[1] % 60
+      if (finalClose[1]) > 60:
+          finalClose[0] += finalClose[0] // 60
+          finalClose[1] = finalClose[1] % 60
+      if (finalOpen[0] == 24):
+          finalOpen[0] = 0
+      if (finalClose[0]) == 24:
+          finalClose[0] = 0
+      if (finalOpen[0]) > 24:
+          finalOpen[0] = finalOpen[0] % 24
+      if (finalClose[0]) > 24:
+          finalClose[0] = finalClose[0] % 24
       fullOpen = str(finalOpen[1])
       fullClose = str(finalClose[1])
-      if fullOpen == "0":
-          fullOpen = "00"
-      if fullClose == "0":
-          fullClose = "00"
+      if len(fullOpen) == 1:
+          fullOpen = "0" + fullOpen
+      if len(fullClose) == 1:
+          fullClose = "0" + fullClose
       opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
       closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
       
   elif(kms <= 400):
-      finalOpen = stepstone(kms, 32)
-      finalClose = stepstone(kms, 15) 
+      openTimes.append(stepstone(200, 34))
+      openTimes.append(stepstone(kms-200, 32))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(kms-200, 15)) 
+      for i in openTimes:
+          finalOpen[0] += i[0]
+          finalOpen[1] += i[1]
+      for i in closeTimes:
+          finalClose[0] += i[0]
+          finalClose[1] += i[1]
       if finalOpen[1] == 60:
           finalOpen[0] += 1
           finalOpen[1] = 0  
+      if finalClose[1] == 60:
+          finalClose[0] += 1
+          finalClose[1] = 0
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen % 60
-          finalOpen[1] = finalOpen // 60
+          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose % 60
-          finalClose[1] = finalClose // 60
+          finalClose[0] += finalClose[0] // 60
+          finalClose[1] = finalClose[1] % 60
+      if (finalOpen[0] == 24):
+          finalOpen[0] = 0
+      if (finalClose[0]) == 24:
+          finalClose[0] = 0
+      if (finalOpen[0]) > 24:
+          finalOpen[0] = finalOpen[0] % 24
+      if (finalClose[0]) > 24:
+          finalClose[0] = finalClose[0] % 24
       fullOpen = str(finalOpen[1])
       fullClose = str(finalClose[1])
-      if fullOpen == "0":
-          fullOpen = "00"
-      if fullClose == "0":
-          fullClose = "00"
+      if len(fullOpen) == 1:
+          fullOpen = "0" + fullOpen
+      if len(fullClose) == 1:
+          fullClose = "0" + fullClose
       opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
       closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
       
   elif(kms <= 600):
-      finalOpen = stepstone(kms, 30)
-      finalClose = stepstone(kms, 15)  
+      openTimes.append(stepstone(200, 34))
+      openTimes.append(stepstone(200, 32))
+      openTimes.append(stepstone(kms-400, 30))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(kms-400, 15))
+      for i in openTimes:
+          finalOpen[0] += i[0]
+          finalOpen[1] += i[1]
+      for i in closeTimes:
+          finalClose[0] += i[0]
+          finalClose[1] += i[1]
       if finalOpen[1] == 60:
           finalOpen[0] += 1
           finalOpen[1] = 0 
+      if finalClose[1] == 60:
+          finalClose[0] += 1
+          finalClose[1] = 0
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen % 60
-          finalOpen[1] = finalOpen // 60
+          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose % 60
-          finalClose[1] = finalClose // 60
+          finalClose[0] += finalClose[0] // 60
+          finalClose[1] = finalClose[1] % 60
+      if (finalOpen[0] == 24):
+          finalOpen[0] = 0
+      if (finalClose[0]) == 24:
+          finalClose[0] = 0
+      if (finalOpen[0]) > 24:
+          finalOpen[0] = finalOpen[0] % 24
+      if (finalClose[0]) > 24:
+          finalClose[0] = finalClose[0] % 24
       fullOpen = str(finalOpen[1])
       fullClose = str(finalClose[1])
-      if fullOpen == "0":
-          fullOpen = "00"
-      if fullClose == "0":
-          fullClose = "00"
+      if len(fullOpen) == 1:
+          fullOpen = "0" + fullOpen
+      if len(fullClose) == 1:
+          fullClose = "0" + fullClose
       opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
       closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   elif(kms <= 1000):
-      finalOpen = stepstone(kms, 28)
-      finalClose = stepstone(kms, 11.428)
+      openTimes.append(stepstone(200, 34))
+      openTimes.append(stepstone(200, 32))
+      openTimes.append(stepstone(200, 30))
+      openTimes.append(stepstone(kms-600, 28))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(kms-600, 11.428))
+      for i in openTimes:
+          finalOpen[0] += i[0]
+          finalOpen[1] += i[1]
+      for i in closeTimes:
+          finalClose[0] += i[0]
+          finalClose[1] += i[1]
       if finalOpen[1] == 60:
           finalOpen[0] += 1
-          finalOpen[1] = 0   
+          finalOpen[1] = 0  
+      if finalClose[1] == 60:
+          finalClose[0] += 1
+          finalClose[1] = 0 
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen % 60
-          finalOpen[1] = finalOpen // 60
+          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose % 60
-          finalClose[1] = finalClose // 60
+          finalClose[0] += finalClose[0] // 60
+          finalClose[1] = finalClose[1] % 60
+      if (finalOpen[0] == 24):
+          finalOpen[0] = 0
+      if (finalClose[0]) == 24:
+          finalClose[0] = 0
+      if (finalOpen[0]) > 24:
+          finalOpen[0] = finalOpen[0] % 24
+      if (finalClose[0]) > 24:
+          finalClose[0] = finalClose[0] % 24
       fullOpen = str(finalOpen[1])
       fullClose = str(finalClose[1])
-      if fullOpen == "0":
-          fullOpen = "00"
-      if fullClose == "0":
-          fullClose = "00"
+      if len(fullOpen) == 1:
+          fullOpen = "0" + fullOpen
+      if len(fullClose) == 1:
+          fullClose = "0" + fullClose
       opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
       closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   elif(kms <= 1300):
-      finalOpen = stepstone(kms, 26)
-      finalClose = stepstone(kms, 13.333)
+      openTimes.append(stepstone(200, 34))
+      openTimes.append(stepstone(200, 32))
+      openTimes.append(stepstone(200, 30))
+      openTimes.append(stepstone(400, 28))
+      openTimes.append(stepstone(kms-1000, 26))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(200, 15))
+      closeTimes.append(stepstone(400, 11.428))
+      closeTimes.append(stepstone(kms-1000, 13.333))
+      for i in openTimes:
+          finalOpen[0] += i[0]
+          finalOpen[1] += i[1]
+      for i in closeTimes:
+          finalClose[0] += i[0]
+          finalClose[1] += i[1]
       if finalOpen[1] == 60:
           finalOpen[0] += 1
-          finalOpen[1] = 0   
+          finalOpen[1] = 0  
+      if finalClose[1] == 60:
+          finalClose[0] += 1
+          finalClose[1] = 0 
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen % 60
-          finalOpen[1] = finalOpen // 60
+          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose % 60
-          finalClose[1] = finalClose // 60
+          finalClose[0] += finalClose[0] // 60
+          finalClose[1] = finalClose[1] % 60  
+      if (finalOpen[0] == 24):
+          finalOpen[0] = 0
+      if (finalClose[0]) == 24:
+          finalClose[0] = 0
+      if (finalOpen[0]) > 24:
+          finalOpen[0] = finalOpen[0] % 24
+      if (finalClose[0]) > 24:
+          finalClose[0] = finalClose[0] % 24        
       fullOpen = str(finalOpen[1])
       fullClose = str(finalClose[1])
-      if fullOpen == "0":
-          fullOpen = "00"
-      if fullClose == "0":
-          fullClose = "00"
+      if len(fullOpen) == 1:
+          fullOpen = "0" + fullOpen
+      if len(fullClose) == 1:
+          fullClose = "0" + fullClose
       opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
       closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   else:
@@ -193,6 +292,7 @@ def calc_times():
 #
 #################
 
+#funcion used to convert distance to time
 def stepstone(dist, rate):
     hour = int(modf(dist / rate)[1])
     minutes = int(modf(dist / rate)[0] * 60)
