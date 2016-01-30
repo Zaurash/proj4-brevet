@@ -80,7 +80,8 @@ def calc_times():
   elif(kms <= 200):
       finalOpen = stepstone(kms, 34)
       if kms == 0:
-          finalClose = 1
+          finalClose = 0,0
+          finalOpen = 0,0
       else:
          finalClose = stepstone(kms, 15) 
       if (finalOpen[1] == 60):
@@ -90,10 +91,10 @@ def calc_times():
           finalClose[0] += 1
           finalClose[1] = 0
       if (finalOpen[1]) > 60:
-          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[0] += finalOpen[1] // 60
           finalOpen[1] = finalOpen[1] % 60
       if (finalClose[1]) > 60:
-          finalClose[0] += finalClose[0] // 60
+          finalClose[0] += finalClose[1] // 60
           finalClose[1] = finalClose[1] % 60
       if (finalOpen[0] == 24):
           finalOpen[0] = 0
@@ -130,10 +131,10 @@ def calc_times():
           finalClose[0] += 1
           finalClose[1] = 0
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[0] += finalOpen[1] // 60
           finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose[0] // 60
+          finalClose[0] += finalClose[1] // 60
           finalClose[1] = finalClose[1] % 60
       if (finalOpen[0] == 24):
           finalOpen[0] = 0
@@ -172,10 +173,10 @@ def calc_times():
           finalClose[0] += 1
           finalClose[1] = 0
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[0] += finalOpen[1] // 60
           finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose[0] // 60
+          finalClose[0] += finalClose[1] // 60
           finalClose[1] = finalClose[1] % 60
       if (finalOpen[0] == 24):
           finalOpen[0] = 0
@@ -215,10 +216,10 @@ def calc_times():
           finalClose[0] += 1
           finalClose[1] = 0 
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[0] += finalOpen[1] // 60
           finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose[0] // 60
+          finalClose[0] += finalClose[1] // 60
           finalClose[1] = finalClose[1] % 60
       if (finalOpen[0] == 24):
           finalOpen[0] = 0
@@ -260,10 +261,10 @@ def calc_times():
           finalClose[0] += 1
           finalClose[1] = 0 
       if finalOpen[1] > 60:
-          finalOpen[0] += finalOpen[0] // 60
+          finalOpen[0] += finalOpen[1] // 60
           finalOpen[1] = finalOpen[1] % 60
       if finalClose[1] > 60:
-          finalClose[0] += finalClose[0] // 60
+          finalClose[0] += finalClose[1] // 60
           finalClose[1] = finalClose[1] % 60  
       if (finalOpen[0] == 24):
           finalOpen[0] = 0
