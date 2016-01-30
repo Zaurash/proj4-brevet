@@ -69,43 +69,119 @@ def calc_times():
   """
   app.logger.debug("Got a JSON request");
   kms = request.args.get('kms', 0, type=int)
+  
+  finalOpen = [0,0]
+  finalClose = [0,0]
+  closeTimes = []
+  openTimes = []
+  
   if(kms < 0):
       return jsonify(result="Distance cannot be negative")
   elif(kms <= 200):
-      hour = stepstone(kms, 34)[0]
-      minutes = stepstone(kms, 34)[1]
-      opening = "Opening time: " + str(hour) + ":" + str(minutes) + " "
-      hourc = stepstone(kms, 15)[0]
-      minutesc = stepstone(kms, 15)[1]
-      closing = "Closing time: " + str(hourc) + ":" + str(minutesc)
+      finalOpen = stepstone(kms, 34)
+      if kms == 0:
+          finalClose = 1
+      else:
+         finalClose = stepstone(kms, 15) 
+      if finalOpen[1] == 60:
+          finalOpen[0] += 1
+          finalOpen[1] = 0
+      if finalOpen[1] > 60:
+          finalOpen[0] += finalOpen % 60
+          finalOpen[1] = finalOpen // 60
+      if finalClose[1] > 60:
+          finalClose[0] += finalClose % 60
+          finalClose[1] = finalClose // 60
+      fullOpen = str(finalOpen[1])
+      fullClose = str(finalClose[1])
+      if fullOpen == "0":
+          fullOpen = "00"
+      if fullClose == "0":
+          fullClose = "00"
+      opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
+      closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
+      
   elif(kms <= 400):
-      hour = stepstone(kms, 32)[0]
-      minutes = stepstone(kms, 32)[1]
-      opening = "Opening time: " + str(hour) + ":" + str(minutes) + " "
-      hourc = stepstone(kms, 15)[0]
-      minutesc = stepstone(kms, 15)[1]
-      closing = "Closing time: " + str(hourc) + ":" + str(minutesc)
+      finalOpen = stepstone(kms, 32)
+      finalClose = stepstone(kms, 15) 
+      if finalOpen[1] == 60:
+          finalOpen[0] += 1
+          finalOpen[1] = 0  
+      if finalOpen[1] > 60:
+          finalOpen[0] += finalOpen % 60
+          finalOpen[1] = finalOpen // 60
+      if finalClose[1] > 60:
+          finalClose[0] += finalClose % 60
+          finalClose[1] = finalClose // 60
+      fullOpen = str(finalOpen[1])
+      fullClose = str(finalClose[1])
+      if fullOpen == "0":
+          fullOpen = "00"
+      if fullClose == "0":
+          fullClose = "00"
+      opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
+      closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
+      
   elif(kms <= 600):
-      hour = stepstone(kms, 30)[0]
-      minutes = stepstone(kms, 30)[1]
-      opening = "Opening time: " + str(hour) + ":" + str(minutes) + " "
-      hourc = stepstone(kms, 15)[0]
-      minutesc = stepstone(kms, 15)[1]
-      closing = "Closing time: " + str(hourc) + ":" + str(minutesc)
+      finalOpen = stepstone(kms, 30)
+      finalClose = stepstone(kms, 15)  
+      if finalOpen[1] == 60:
+          finalOpen[0] += 1
+          finalOpen[1] = 0 
+      if finalOpen[1] > 60:
+          finalOpen[0] += finalOpen % 60
+          finalOpen[1] = finalOpen // 60
+      if finalClose[1] > 60:
+          finalClose[0] += finalClose % 60
+          finalClose[1] = finalClose // 60
+      fullOpen = str(finalOpen[1])
+      fullClose = str(finalClose[1])
+      if fullOpen == "0":
+          fullOpen = "00"
+      if fullClose == "0":
+          fullClose = "00"
+      opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
+      closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   elif(kms <= 1000):
-      hour = stepstone(kms, 26)[0]
-      minutes = stepstone(kms, 26)[1]
-      opening = "Opening time: " + str(hour) + ":" + str(minutes) + " "
-      hourc = stepstone(kms, 11.428)[0]
-      minutesc = stepstone(kms, 11.428)[1]
-      closing = "Closing time: " + str(hourc) + ":" + str(minutesc)
+      finalOpen = stepstone(kms, 28)
+      finalClose = stepstone(kms, 11.428)
+      if finalOpen[1] == 60:
+          finalOpen[0] += 1
+          finalOpen[1] = 0   
+      if finalOpen[1] > 60:
+          finalOpen[0] += finalOpen % 60
+          finalOpen[1] = finalOpen // 60
+      if finalClose[1] > 60:
+          finalClose[0] += finalClose % 60
+          finalClose[1] = finalClose // 60
+      fullOpen = str(finalOpen[1])
+      fullClose = str(finalClose[1])
+      if fullOpen == "0":
+          fullOpen = "00"
+      if fullClose == "0":
+          fullClose = "00"
+      opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
+      closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   elif(kms <= 1300):
-      hour = stepstone(kms, 26)[0]
-      minutes = stepstone(kms, 26)[1]
-      opening = "Opening time: " + str(hour) + ":" + str(minutes) + " "
-      hourc = stepstone(kms, 13.333)[0]
-      minutesc = stepstone(kms, 13.333)[1]
-      closing = "Closing time: " + str(hourc) + ":" + str(minutesc)
+      finalOpen = stepstone(kms, 26)
+      finalClose = stepstone(kms, 13.333)
+      if finalOpen[1] == 60:
+          finalOpen[0] += 1
+          finalOpen[1] = 0   
+      if finalOpen[1] > 60:
+          finalOpen[0] += finalOpen % 60
+          finalOpen[1] = finalOpen // 60
+      if finalClose[1] > 60:
+          finalClose[0] += finalClose % 60
+          finalClose[1] = finalClose // 60
+      fullOpen = str(finalOpen[1])
+      fullClose = str(finalClose[1])
+      if fullOpen == "0":
+          fullOpen = "00"
+      if fullClose == "0":
+          fullClose = "00"
+      opening = "Opening time: " + str(finalOpen[0]) + ":" + fullOpen + " "
+      closing = "Closing time: " + str(finalClose[0]) + ":" + fullClose 
   else:
       return jsonify(result="Distance must be under 1300 Kilometers")
   final = opening + closing
