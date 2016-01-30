@@ -1,14 +1,21 @@
 # proj4-brevet
 
-## ACP controle times
+
+## IX Path
+
+Files may be found ix at /home/users/zgj/CIS399/Project4/proj4-brevet
 
 
-## AJAX and Flask reimplementation
+## Authors 
 
-The current RUSA controle time calculator is a Perl script that takes an HTML form and emits a text page. The reimplementation will fill in times as the input fields are filled.  Each time a distance is filled in, the corresponding open and close times should be filled in.   If no begin time has been provided, use 0:00 as the begin time. 
+Initial version by M Young; revised by Zachary Jones 
 
-I will leave much of the design to you.  
 
-## Testing
+## Files Changed
 
-A requirement of this project will be designing a systematic test suite. 
+app.py
+calc.html
+
+## File to run
+
+app.py
